@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         myEditText1?.hint = "Enter Email"
 
         myTextView2?.text = "Password"
-        myEditText2?.hint
+        myEditText2?.hint = "Password"
         myEditText2?.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
 
         myBtn?.text = "Login"

@@ -11,6 +11,8 @@
     "view_widgets": [
       "text_view",
       "edit_text",
+      "text_view",
+      "edit_text",
       "button"
     ]
   }]
