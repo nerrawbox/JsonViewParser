@@ -21,9 +21,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val parentLayout: LinearLayout = findViewById(R.id.myLinearLayout)
-        val viewParser = ViewParser(this, parentLayout, "screen.json", "MainActivity")
+        val viewParser = ViewParser(this, "screen.json", "MainActivity")
 
         val childLayout = viewParser.initLayout()
+        parentLayout.addView(childLayout)
 
         childLayout?.setPaddingRelative(24, 24, 24, 0)
 

@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.*
 import org.json.JSONObject
 
-class ViewParser(val mContext: Context, val parentLayout: LinearLayout, val mFileName: String, val mJSONRoot: String){
+class ViewParser(val mContext: Context, val mFileName: String, val mJSONRoot: String){
 
     private val jsonParser by lazy { JsonParser(mContext, mFileName, mJSONRoot) }
     private var layoutParams: LinearLayout.LayoutParams? = null
@@ -27,7 +27,6 @@ class ViewParser(val mContext: Context, val parentLayout: LinearLayout, val mFil
 
     fun initViews(): List<View> {
         val views = initWidgets()
-        parentLayout.addView(childLayout)
 
         return views
     }
