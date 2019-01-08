@@ -1,12 +1,12 @@
 package com.dev.nerrawbox.viewparser
 
 import android.content.Context
-import com.beust.klaxon.JsonObject
+import android.util.Log
 import org.json.JSONArray
 import org.json.JSONObject
 import java.nio.charset.Charset
 
-class JsonParser(val mContext: Context, val mFileName: String, val mJSONRoot: String) {
+internal class JsonParser(val mContext: Context, val mFileName: String, val mJSONRoot: String) {
 
     private fun loadJSONFromAsset(): String? {
         var json: String? = null
@@ -23,19 +23,33 @@ class JsonParser(val mContext: Context, val mFileName: String, val mJSONRoot: St
 
         return json
 
-
     }
 
-    fun getLayoutInfoFromJson(): String {
+    //Note: Revise this function as the json file requires
+    fun getLayoutInfoFromJson(): JSONArray {
 
-        return ""
+        val jsonLayout = JSONObject(loadJSONFromAsset())
+            .getJSONArray(mJSONRoot)
+            .getJSONObject(0)
+            .getJSONArray(LAYOUT_INFO)
+
+        Log.d("jsonLayout", jsonLayout.toString())
+
+        return jsonLayout
     }
 
+    //Note: Revise this function as the json file requires
     fun getWidgetInfoFromJson(): JSONArray {
 
+        val jsonWidgets = JSONObject(loadJSONFromAsset())
+                    .getJSONArray(mJSONRoot)
+                    .getJSONObject(0)
+                    .getJSONArray(VIEW_WIDGETS)
 
-        return JSONArray("")
+        Log.d("jsonWidgets", jsonWidgets.toString())
+
+        return jsonWidgets
+
     }
-
 
 }
