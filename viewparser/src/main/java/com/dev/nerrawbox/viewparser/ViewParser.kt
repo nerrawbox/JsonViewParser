@@ -11,27 +11,25 @@ class ViewParser(val mContext: Context, val parentLayout: LinearLayout, val mFil
     private var layoutParams: LinearLayout.LayoutParams? = null
     private var childLayout : LinearLayout? = null
 
-    fun initViews(): List<View> {
-
-        initLayout()
-
-        val views = initWidgets()
-
-        parentLayout.addView(childLayout)
-
-        return views
-    }
-
-    private fun initLayout(){
+    fun initLayout(): LinearLayout? {
         val layoutObject = jsonParser.getLayoutInfoFromJson().getJSONObject(0)
 
         if(layoutObject.has(LAYOUT_ID))
-           initLinearLayout(layoutObject)
+            initLinearLayout(layoutObject)
         if(layoutObject.has(LAYOUT_ORIENTATION))
             initOrientation(layoutObject)
         if(layoutObject.has(LAYOUT_PARAMS))
             initParams(layoutObject)
 
+        return childLayout
+
+    }
+
+    fun initViews(): List<View> {
+        val views = initWidgets()
+        parentLayout.addView(childLayout)
+
+        return views
     }
 
     private fun initParams(layoutObject: JSONObject) {
