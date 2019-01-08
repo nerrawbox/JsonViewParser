@@ -2,6 +2,7 @@ package com.dev.nerrawbox.jsonviewparser
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputType
 import android.view.View
 import android.widget.*
 import com.dev.nerrawbox.viewparser.ViewParser
@@ -9,8 +10,10 @@ import com.dev.nerrawbox.viewparser.ViewParser
 class MainActivity : AppCompatActivity() {
 
     private var myWidgets: List<View>? = null
-    private var myTextView: TextView? = null
-    private var myEditText: EditText? = null
+    private var myTextView1: TextView? = null
+    private var myEditText1: EditText? = null
+    private var myTextView2: TextView? = null
+    private var myEditText2: EditText? = null
     private var myBtn: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,15 +23,25 @@ class MainActivity : AppCompatActivity() {
         val parentLayout: LinearLayout = findViewById(R.id.myLinearLayout)
         val viewParser = ViewParser(this, parentLayout, "screen.json", "MainActivity")
 
+        val childLayout = viewParser.initLayout()
+
+        childLayout?.setPaddingRelative(24, 24, 24, 0)
+
         myWidgets = viewParser.initViews()
-        myTextView = myWidgets!![0] as TextView
-        myEditText = myWidgets!![1] as EditText
-        myBtn = myWidgets!![2] as Button
+        myTextView1 = myWidgets!![0] as TextView
+        myEditText1 = myWidgets!![1] as EditText
+        myTextView2 = myWidgets!![2] as TextView
+        myEditText2 = myWidgets!![3] as EditText
+        myBtn = myWidgets!![4] as Button
 
-        myTextView?.text = "Hello World"
-        myEditText?.hint = "Username"
+        myTextView1?.text = "Email"
+        myEditText1?.hint = "Enter Email"
 
-        myBtn?.text = "Submit"
+        myTextView2?.text = "Password"
+        myEditText2?.hint
+        myEditText2?.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+
+        myBtn?.text = "Login"
         myBtn?.setOnClickListener {
             Toast.makeText(this@MainActivity, "Clicked", Toast.LENGTH_SHORT).show()
         }
