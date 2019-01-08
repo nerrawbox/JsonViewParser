@@ -2,13 +2,10 @@ package com.dev.nerrawbox.viewparser
 
 import android.content.Context
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import org.json.JSONObject
 
-class ViewParser(val mContext: Context, private val mLinearLayout: LinearLayout, val mFileName: String, val mJSONRoot: String){
+class ViewParser(val mContext: Context, val parentLayout: LinearLayout, val mFileName: String, val mJSONRoot: String){
 
     private val jsonParser by lazy { JsonParser(mContext, mFileName, mJSONRoot) }
     private var layoutParams: LinearLayout.LayoutParams? = null
@@ -20,7 +17,7 @@ class ViewParser(val mContext: Context, private val mLinearLayout: LinearLayout,
 
         val views = initWidgets()
 
-        mLinearLayout.addView(childLayout)
+        parentLayout.addView(childLayout)
 
         return views
     }
@@ -41,10 +38,12 @@ class ViewParser(val mContext: Context, private val mLinearLayout: LinearLayout,
         val w = layoutObject.getJSONObject(LAYOUT_PARAMS).getString(LAYOUT_PARAMS_WIDTH)
         val h = layoutObject.getJSONObject(LAYOUT_PARAMS).getString(LAYOUT_PARAMS_HEIGHT)
 
+
         val paramW = if(w == "match_parent") LinearLayout.LayoutParams.MATCH_PARENT else LinearLayout.LayoutParams.WRAP_CONTENT
         val paramH = if(h == "match_parent") LinearLayout.LayoutParams.MATCH_PARENT else LinearLayout.LayoutParams.WRAP_CONTENT
 
         layoutParams = LinearLayout.LayoutParams(paramW, paramH)
+        childLayout?.layoutParams = layoutParams
     }
 
     private fun initOrientation(layoutObject: JSONObject) {
