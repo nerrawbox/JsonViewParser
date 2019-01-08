@@ -1,13 +1,11 @@
 package com.dev.nerrawbox.viewparser
 
-class Constants {
-    val LAYOUT_INFO = "layout_info"
-    val LAYOUT_ID = "layout_id"
-    val LAYOUT_ORIENTATION = "layout_orientation"
-    val LAYOUT_PARAMS = "layout_params"
-    val LAYOUT_PARAMS_WIDTH = "width"
-    val LAYOUT_PARAMS_HEIGHT = "height"
+    const val LAYOUT_INFO = "layout_info"
+    const val LAYOUT_ID = "layout_id"
+    const val LAYOUT_ORIENTATION = "layout_orientation"
+    const val LAYOUT_PARAMS = "layout_params"
+    const val LAYOUT_PARAMS_WIDTH = "width"
+    const val LAYOUT_PARAMS_HEIGHT = "height"
 
-    val VIEW_WIDGETS = "view_widgets"
+    const val VIEW_WIDGETS = "view_widgets"
 
-}
