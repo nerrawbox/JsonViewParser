@@ -20,10 +20,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val imgView: ImageView = findViewById(R.id.imgView)
+        imgView.setOnClickListener {
+            Toast.makeText(this@MainActivity, "JsonParser Activated", Toast.LENGTH_SHORT).show()
+            setupParser()
+        }
+
+        val txtView: TextView = findViewById(R.id.txtView)
+        txtView.setOnClickListener {
+            Toast.makeText(this@MainActivity, "JsonParser Activated", Toast.LENGTH_SHORT).show()
+            setupParser()
+        }
+
+    }
+
+    private fun setupParser(){
         val parentLayout: LinearLayout = findViewById(R.id.myLinearLayout)
         val viewParser = ViewParser(this, "screen.json", "MainActivity")
 
         val childLayout = viewParser.initLayout()
+        childLayout?.removeAllViews()
         parentLayout.addView(childLayout)
 
         childLayout?.setPaddingRelative(24, 24, 24, 0)
@@ -46,6 +62,5 @@ class MainActivity : AppCompatActivity() {
         myBtn?.setOnClickListener {
             Toast.makeText(this@MainActivity, "Clicked", Toast.LENGTH_SHORT).show()
         }
-
     }
 }
