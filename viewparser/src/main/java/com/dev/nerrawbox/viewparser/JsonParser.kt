@@ -6,7 +6,18 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.nio.charset.Charset
 
-internal class JsonParser(val mContext: Context, val mFileName: String, val mJSONRoot: String) {
+
+/**
+ * @param mContext -> Refers to the current Context Activity of a view
+ * @param mFileName -> The file name of the target json file inside the assets folder
+ * @param mJSONRoot -> The Key for the json data you want to get and parse
+ *
+ * This class takes the json file from the assets folder on your Android Studio project,
+ * provided the file name of the desired json file.
+ *
+ * -Warren Cedro 1/9/19
+ */
+internal class JsonParser(private val mContext: Context, private val mFileName: String, private val mJSONRoot: String) {
 
     private fun loadJSONFromAsset(): String? {
         var json: String? = null
@@ -25,7 +36,12 @@ internal class JsonParser(val mContext: Context, val mFileName: String, val mJSO
 
     }
 
-    //Note: Revise this function as the json file requires
+    /**
+     * This function searches the value from the json file by their key
+     * i.e. LAYOUT_INFO declared inside Constants.kt
+     *
+     * Note: Revise this function as the json file requires
+     */
     fun getLayoutInfoFromJson(): JSONArray {
 
         val jsonLayout = JSONObject(loadJSONFromAsset())
@@ -38,7 +54,12 @@ internal class JsonParser(val mContext: Context, val mFileName: String, val mJSO
         return jsonLayout
     }
 
-    //Note: Revise this function as the json file requires
+    /**
+     * This function searches the value from the json file by their key
+     * i.e. VIEW_WIDGETS declared inside Constants.kt
+     *
+     * Note: Revise this function as the json file requires
+     */
     fun getWidgetInfoFromJson(): JSONArray {
 
         val jsonWidgets = JSONObject(loadJSONFromAsset())
