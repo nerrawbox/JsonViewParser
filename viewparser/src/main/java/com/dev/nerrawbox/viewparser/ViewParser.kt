@@ -41,7 +41,6 @@ class ViewParser(private val mContext: Context, private val mFileName: String, p
             setupParams(layoutObject)
 
         return childLayout
-
     }
 
     /**
@@ -94,7 +93,6 @@ class ViewParser(private val mContext: Context, private val mFileName: String, p
     private fun drawButton(): Button {
         val b1 = Button(mContext)
         b1.text = "Button"
-        //b1.layoutParams = layoutParams
         childLayout?.addView(b1)
 
         return b1
@@ -102,8 +100,7 @@ class ViewParser(private val mContext: Context, private val mFileName: String, p
 
     private fun drawTextView(): TextView {
         val t1 = TextView(mContext)
-        t1.text = "Text View"
-        //t1.layoutParams = layoutParams
+        t1.text = "TextView"
         t1.visibility = View.VISIBLE
         childLayout?.addView(t1)
 
@@ -111,10 +108,8 @@ class ViewParser(private val mContext: Context, private val mFileName: String, p
     }
 
     private fun drawEditText(): EditText {
-
         val e1 = EditText(mContext)
-        e1.hint = "Enter Text"
-        //e1.layoutParams = layoutParams
+        e1.hint = "EditText"
         e1.visibility = View.VISIBLE
         childLayout?.addView(e1)
 
