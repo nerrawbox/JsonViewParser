@@ -7,6 +7,9 @@ import android.view.View
 import android.widget.*
 import com.dev.nerrawbox.viewparser.ViewParser
 
+/**
+ * TestApp for the framework
+ */
 class MainActivity : AppCompatActivity() {
 
     private var myWidgets: List<View>? = null
