@@ -22,14 +22,14 @@ class MainActivity : AppCompatActivity() {
 
         val imgView: ImageView = findViewById(R.id.imgView)
         imgView.setOnClickListener {
-            Toast.makeText(this@MainActivity, "JsonParser Activated", Toast.LENGTH_SHORT).show()
             setupParser()
+            Toast.makeText(this@MainActivity, "JsonParser Activated", Toast.LENGTH_SHORT).show()
         }
 
         val txtView: TextView = findViewById(R.id.txtView)
         txtView.setOnClickListener {
-            Toast.makeText(this@MainActivity, "JsonParser Activated", Toast.LENGTH_SHORT).show()
             setupParser()
+            Toast.makeText(this@MainActivity, "JsonParser Activated", Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         childLayout?.removeAllViews()
         parentLayout.addView(childLayout)
 
-        childLayout?.setPaddingRelative(24, 24, 24, 0)
+        childLayout?.setPadding(24, 24, 24, 0)
 
         myWidgets = viewParser.initViews()
         myTextView1 = myWidgets!![0] as TextView
