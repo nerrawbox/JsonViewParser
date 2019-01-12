@@ -1,5 +1,6 @@
 package com.dev.nerrawbox.jsonviewparser
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputType
@@ -25,8 +26,9 @@ class MainActivity : AppCompatActivity() {
 
         val imgView: ImageView = findViewById(R.id.imgView)
         imgView.setOnClickListener {
-            setupParser()
-            Toast.makeText(this@MainActivity, "JsonParser Activated", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, ExerciseActivity::class.java))
+            //setupParser()
+            //Toast.makeText(this@MainActivity, "JsonParser Activated", Toast.LENGTH_SHORT).show()
         }
 
         val txtView: TextView = findViewById(R.id.txtView)

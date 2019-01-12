@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <TableLayout
+            android:id="@+id/tblLayOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:stretchColumns="3">
+
+        <TableRow
+                android:id="@+id/tvRow"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp
+"
+                android:animateLayoutChanges="true"
+                android:visibility="visible">
+
+
+            <TextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="#333333"
+                    android:text="Avengers: Infinity War"
+                    android:textStyle="normal|bold"
+                    android:textSize="12sp" />
+
+            <LinearLayout
+                    android:layout_column="3"
+                    android:gravity="end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/txtDirector"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="#333333"
+                        android:text="Steve Rogers"
+                        android:textStyle="normal|italic"
+                        android:textSize="10sp" />
+            </LinearLayout>
+
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
