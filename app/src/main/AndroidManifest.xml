@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".PeopleListActivity">
         </activity>
+        <activity android:name=".ViewPeopleActivity">
+        </activity>
     </application>
 
 </manifest>

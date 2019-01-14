@@ -1,20 +1,20 @@
 package com.dev.nerrawbox.jsonviewparser.contract
 
 import android.view.View
-import com.dev.nerrawbox.jsonviewparser.adapter.MovieInfoListAdapter
-import com.dev.nerrawbox.jsonviewparser.adapter.PeopleInfoAdapter
+import com.dev.nerrawbox.jsonviewparser.adapter.MovieListAdapter
+import com.dev.nerrawbox.jsonviewparser.adapter.PeopleListAdapter
 
 interface IExerciseActivityContract {
 
     interface IViewContract {
         fun initListView()
-        fun setListViewAdapter(adapter: MovieInfoListAdapter)
-        fun setListViewAdapter(adapter: PeopleInfoAdapter)
+        fun setListViewAdapter(adapter: MovieListAdapter)
+        fun setListViewAdapter(adapter: PeopleListAdapter)
     }
 
     interface IModelContract {
-        fun parseJsonSetMovieAdapter(mResource: Int): MovieInfoListAdapter
-        fun parseJsonSetPeopleAdapter(mResource: Int): PeopleInfoAdapter
+        fun parseJsonSetMovieAdapter(mResource: Int): MovieListAdapter
+        fun parseJsonSetPeopleAdapter(mResource: Int): PeopleListAdapter
     }
 
     interface IPresenterContract {

@@ -2,8 +2,8 @@ package com.dev.nerrawbox.jsonviewparser.model
 
 import android.content.Context
 import android.util.Log
-import com.dev.nerrawbox.jsonviewparser.adapter.MovieInfoListAdapter
-import com.dev.nerrawbox.jsonviewparser.adapter.PeopleInfoAdapter
+import com.dev.nerrawbox.jsonviewparser.adapter.MovieListAdapter
+import com.dev.nerrawbox.jsonviewparser.adapter.PeopleListAdapter
 import com.dev.nerrawbox.jsonviewparser.contract.IExerciseActivityContract
 import org.json.JSONArray
 import java.nio.charset.Charset
@@ -12,14 +12,14 @@ class ExerciseActivityModel(context: Context) : IExerciseActivityContract.IModel
 
     private val mContext = context
 
-    override fun parseJsonSetMovieAdapter(mResource: Int): MovieInfoListAdapter {
+    override fun parseJsonSetMovieAdapter(mResource: Int): MovieListAdapter {
         Log.d("Wrn", "parseJsonSetMovieAdapter")
-        return MovieInfoListAdapter(mContext, mResource, parseJsonMovieData())
+        return MovieListAdapter(mContext, mResource, parseJsonMovieData())
     }
 
-    override fun parseJsonSetPeopleAdapter(mResource: Int): PeopleInfoAdapter {
+    override fun parseJsonSetPeopleAdapter(mResource: Int): PeopleListAdapter {
         Log.d("Wrn", "parseJsonSetPeopleAdapter")
-        return PeopleInfoAdapter(mContext, mResource, parseJsonPeopleData())
+        return PeopleListAdapter(mContext, mResource, parseJsonPeopleData())
     }
 
     private fun parseJsonMovieData(): ArrayList<MovieInfo> {

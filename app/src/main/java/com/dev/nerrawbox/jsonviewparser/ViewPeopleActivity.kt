@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.widget.TextView
 import com.dev.nerrawbox.jsonviewparser.model.People
 
-class PeopleListActivity : AppCompatActivity() {
+class ViewPeopleActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_people_list)
+        setContentView(R.layout.activity_view_people)
 
         val txtName: TextView = findViewById(R.id.txtName)
         val txtGender: TextView = findViewById(R.id.txtGender)

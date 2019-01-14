@@ -15,7 +15,7 @@ import com.dev.nerrawbox.jsonviewparser.R
 import com.dev.nerrawbox.jsonviewparser.ViewMovieActivity
 import java.io.Serializable
 
-class MovieInfoListAdapter(context: Context, resource: Int, objects: List<MovieInfo>?) :
+class MovieListAdapter(context: Context, resource: Int, objects: List<MovieInfo>?) :
     ArrayAdapter<MovieInfo>(context, resource, objects) {
 
     private val mContext: Context by lazy { context }
