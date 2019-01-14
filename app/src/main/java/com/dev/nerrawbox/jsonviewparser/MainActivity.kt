@@ -20,21 +20,37 @@ class MainActivity : AppCompatActivity() {
     private var myEditText2: EditText? = null
     private var myBtn: Button? = null
 
+    private var btnMovie: Button? = null
+    private var btnPeople: Button? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val imgView: ImageView = findViewById(R.id.imgView)
         imgView.setOnClickListener {
-            startActivity(Intent(this, ExerciseActivity::class.java))
-            //setupParser()
-            //Toast.makeText(this@MainActivity, "JsonParser Activated", Toast.LENGTH_SHORT).show()
+            setupParser()
+            Toast.makeText(this@MainActivity, "JsonParser Activated", Toast.LENGTH_SHORT).show()
         }
 
         val txtView: TextView = findViewById(R.id.txtView)
         txtView.setOnClickListener {
             setupParser()
             Toast.makeText(this@MainActivity, "JsonParser Activated", Toast.LENGTH_SHORT).show()
+        }
+
+        val intent = Intent(this, ExerciseActivity::class.java)
+
+        val btnMovies: Button = findViewById(R.id.btnMovies)
+        btnMovies.setOnClickListener {
+            intent.putExtra("list_type", "movie")
+            startActivity(intent)
+        }
+
+        val btnPeople: Button = findViewById(R.id.btnPeople)
+        btnPeople.setOnClickListener {
+            intent.putExtra("list_type", "people")
+            startActivity(intent)
         }
 
     }

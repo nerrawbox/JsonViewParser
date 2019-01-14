@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ListView
 import com.dev.nerrawbox.jsonviewparser.adapter.MovieInfoListAdapter
+import com.dev.nerrawbox.jsonviewparser.adapter.PeopleInfoAdapter
 import com.dev.nerrawbox.jsonviewparser.contract.IExerciseActivityContract
 import com.dev.nerrawbox.jsonviewparser.contract.IExerciseActivityContract.IPresenterContract
 import com.dev.nerrawbox.jsonviewparser.presenter.ExerciseActivityPresenter
@@ -19,7 +20,9 @@ class ExerciseActivity : AppCompatActivity(), IExerciseActivityContract.IViewCon
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise)
 
-        mPresenter = ExerciseActivityPresenter(this, this@ExerciseActivity, R.layout.movie_info_list_view)
+        val listType: String = intent.getStringExtra("list_type")
+
+        mPresenter = ExerciseActivityPresenter(this, this@ExerciseActivity, R.layout.my_listview_layout, listType)
         Log.d("Wrn-Act", "OnCreate")
         (mPresenter as ExerciseActivityPresenter).populateListView()
 
@@ -35,4 +38,8 @@ class ExerciseActivity : AppCompatActivity(), IExerciseActivityContract.IViewCon
         movieInfoListView?.adapter = adapter
     }
 
+    override fun setListViewAdapter(adapter: PeopleInfoAdapter) {
+        Log.d("Wrn-Act", "setListViewAdapter")
+        movieInfoListView?.adapter = adapter
+    }
 }

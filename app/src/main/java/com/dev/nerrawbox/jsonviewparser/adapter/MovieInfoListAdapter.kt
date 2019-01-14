@@ -2,7 +2,6 @@ package com.dev.nerrawbox.jsonviewparser.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -34,14 +33,14 @@ class MovieInfoListAdapter(context: Context, resource: Int, objects: List<MovieI
 //        Log.d("Wrn", "Adapter: Title =  $title")
 //        Log.d("Wrn", "Adapter: Director =  $director")
 
-        var listItem = convertView
+        var listItem: View? = convertView
 
         if (listItem == null)
             listItem = LayoutInflater.from(mContext).inflate(mResource, parent, false)
 
-        val txtTitle = listItem?.findViewById(R.id.txtTitle) as TextView
-        val txtDirector = listItem.findViewById(R.id.txtDirector) as TextView
-        val btnViewMov = listItem.findViewById(R.id.btnViewMov) as ImageButton
+        val txtTitle = listItem?.findViewById(R.id.txtForTitleOrName) as TextView
+        val txtDirector = listItem.findViewById(R.id.txtForDirectorOrGender) as TextView
+        val btnViewMov = listItem.findViewById(R.id.btnViewMovOrPeople) as ImageButton
 
         val movieInfo = MovieInfo(title, director, description, producer, releaseDate, rtScore)
 
