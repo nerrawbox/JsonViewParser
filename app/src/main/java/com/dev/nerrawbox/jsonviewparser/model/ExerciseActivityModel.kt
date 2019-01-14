@@ -35,11 +35,12 @@ class ExerciseActivityModel(context: Context) : IExerciseActivityContract.IModel
 
                 val title = jsonObject.getString("title")
                 val director = jsonObject.getString("director")
+                val description = jsonObject.getString("description")
+                val producer = jsonObject.getString("producer")
+                val releaseDate = jsonObject.getString("release_date")
+                val rtScore = jsonObject.getString("rt_score")
 
-//                Log.d("Wrn-title", jsonObject.getString("title"))
-//                Log.d("Wrn-director", jsonObject.getString("director"))
-
-                val movInfo = MovieInfo(title, director)
+                val movInfo = MovieInfo(title, director, description, producer, releaseDate, rtScore)
 
                 movInfoList.add(movInfo)
             }

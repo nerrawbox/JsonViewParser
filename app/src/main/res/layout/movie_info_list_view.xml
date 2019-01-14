@@ -16,8 +16,7 @@
         <TableRow
                 android:id="@+id/tvRow"
                 android:paddingTop="6dp"
-                android:paddingBottom="6dp
-"
+                android:paddingBottom="6dp"
                 android:animateLayoutChanges="true"
                 android:visibility="visible">
 
@@ -41,6 +40,8 @@
 
                 <TextView
                         android:id="@+id/txtDirector"
+                        android:paddingStart="6dp"
+                        android:paddingEnd="6dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="2"
@@ -49,6 +50,12 @@
                         android:text="Steve Rogers"
                         android:textStyle="normal|italic"
                         android:textSize="10sp" />
+
+                <ImageButton
+                        android:id="@+id/btnViewMov"
+                        android:src="@drawable/ic_launch_black_24dp"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"/>
             </LinearLayout>
 
         </TableRow>
