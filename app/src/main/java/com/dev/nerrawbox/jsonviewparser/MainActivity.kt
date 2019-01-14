@@ -20,9 +20,6 @@ class MainActivity : AppCompatActivity() {
     private var myEditText2: EditText? = null
     private var myBtn: Button? = null
 
-    private var btnMovie: Button? = null
-    private var btnPeople: Button? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,17 +36,23 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity, "JsonParser Activated", Toast.LENGTH_SHORT).show()
         }
 
+
+        val lvCategory: ListView = findViewById(R.id.lvCategory)
+
+        val category = listOf("Movie", "People")
+        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, category)
+
+        lvCategory.adapter = adapter
+
         val intent = Intent(this, ExerciseActivity::class.java)
+        lvCategory.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+            val selectedItem = parent.getItemAtPosition(position) as String
 
-        val btnMovies: Button = findViewById(R.id.btnMovies)
-        btnMovies.setOnClickListener {
-            intent.putExtra("list_type", "movie")
-            startActivity(intent)
-        }
+            if(selectedItem == category[0])
+                intent.putExtra("list_type", "movie")
+            else if(selectedItem == category[1])
+                intent.putExtra("list_type", "people")
 
-        val btnPeople: Button = findViewById(R.id.btnPeople)
-        btnPeople.setOnClickListener {
-            intent.putExtra("list_type", "people")
             startActivity(intent)
         }
 

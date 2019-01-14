@@ -40,38 +40,18 @@
                 android:layout_marginStart="8dp"
                 app:layout_constraintStart_toStartOf="parent"/>
 
-        <Button
-                android:id="@+id/btnMovies"
-                android:text="Movies"
-                android:layout_width="wrap_content"
+        <ListView
+                android:id="@+id/lvCategory"
+                android:padding="16dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:layout_below="@+id/imgView"
-                android:layout_marginStart="48dp"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/imgView"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toStartOf="@+id/imgView"/>
-
-        <Button
-                android:id="@+id/btnPeople"
-                android:text="People"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:layout_below="@+id/imgView"
-                android:layout_marginEnd="48dp"
+                android:layout_marginStart="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/imgView"
-                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintHorizontal_bias="1.0"
+                android:layout_marginBottom="32dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imgView"
-                android:layout_marginStart="8dp"/>
+                app:layout_constraintTop_toBottomOf="@+id/imgView"/>
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>
