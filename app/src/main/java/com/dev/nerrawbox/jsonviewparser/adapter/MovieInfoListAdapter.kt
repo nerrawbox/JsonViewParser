@@ -2,6 +2,7 @@ package com.dev.nerrawbox.jsonviewparser.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.dev.nerrawbox.jsonviewparser.model.MovieInfo
 
 import com.dev.nerrawbox.jsonviewparser.R
 import com.dev.nerrawbox.jsonviewparser.ViewMovieActivity
+import java.io.Serializable
 
 class MovieInfoListAdapter(context: Context, resource: Int, objects: List<MovieInfo>?) :
     ArrayAdapter<MovieInfo>(context, resource, objects) {
@@ -28,7 +30,7 @@ class MovieInfoListAdapter(context: Context, resource: Int, objects: List<MovieI
         val producer = getItem(position)!!.producer
         val releaseDate = getItem(position)!!.release_date
         val rtScore = getItem(position)!!.rt_score
-
+        
 //        Log.d("Wrn", "Adapter: Title =  $title")
 //        Log.d("Wrn", "Adapter: Director =  $director")
 
@@ -41,17 +43,14 @@ class MovieInfoListAdapter(context: Context, resource: Int, objects: List<MovieI
         val txtDirector = listItem.findViewById(R.id.txtDirector) as TextView
         val btnViewMov = listItem.findViewById(R.id.btnViewMov) as ImageButton
 
+        val movieInfo = MovieInfo(title, director, description, producer, releaseDate, rtScore)
+
         btnViewMov.setOnClickListener{
             val intent = Intent(mContext, ViewMovieActivity::class.java)
-            intent.putExtra("title", title)
-            intent.putExtra("director", director)
-            intent.putExtra("description", description)
-            intent.putExtra("producer", producer)
-            intent.putExtra("release_date", releaseDate)
-            intent.putExtra("rt_score", rtScore)
+            intent.putExtra("movieInfo", movieInfo as Serializable)
+
             mContext.startActivity(intent)
         }
-
 
         txtTitle.text = title
         txtDirector.text = director
