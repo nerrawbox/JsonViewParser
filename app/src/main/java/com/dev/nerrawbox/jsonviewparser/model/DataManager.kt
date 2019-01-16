@@ -1,6 +1,5 @@
 package com.dev.nerrawbox.jsonviewparser.model
 
-import android.util.Log
 import org.json.JSONObject
 
 object DataManager {
@@ -8,7 +7,7 @@ object DataManager {
     val movieList = ArrayList<MovieInfo>()
     val peopleList = ArrayList<People>()
 
-    fun initializeMovies(jsonObject: JSONObject) {
+    fun initializeMovie(jsonObject: JSONObject) {
 
             val title = jsonObject.getString("title")
             val director = jsonObject.getString("director")
