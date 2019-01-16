@@ -3,7 +3,7 @@ package com.dev.nerrawbox.jsonviewparser
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import com.dev.nerrawbox.jsonviewparser.model.People
+import com.dev.nerrawbox.jsonviewparser.model.DataManager
 
 class ViewPeopleActivity : AppCompatActivity() {
 
@@ -18,7 +18,9 @@ class ViewPeopleActivity : AppCompatActivity() {
         val txtHairColor: TextView = findViewById(R.id.txtHairColor)
 
         if(intent != null){
-            val peopleInfo = intent.extras.get("peopleInfo") as People
+            val index = intent.getIntExtra("peopleInfo-index", -1)
+
+            val peopleInfo = DataManager.findPeople(index)
 
             txtName.text = peopleInfo.name
             txtGender.text = peopleInfo.gender

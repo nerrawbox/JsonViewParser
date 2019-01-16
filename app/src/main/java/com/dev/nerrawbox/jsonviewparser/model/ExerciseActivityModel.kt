@@ -24,7 +24,7 @@ class ExerciseActivityModel(context: Context) : IExerciseActivityContract.IModel
 
     private fun parseJsonMovieData(): ArrayList<MovieInfo> {
         Log.d("Wrn", "parseJsonMovieData")
-        val movInfoList = ArrayList<MovieInfo>()
+        var movInfoList = ArrayList<MovieInfo>()
         try {
             val jsonArr = JSONArray(loadJSONFromAsset("movieInfo.json"))
 
@@ -33,16 +33,9 @@ class ExerciseActivityModel(context: Context) : IExerciseActivityContract.IModel
             (0..len).forEach { index ->
                 val jsonObject = jsonArr.getJSONObject(index)
 
-                val title = jsonObject.getString("title")
-                val director = jsonObject.getString("director")
-                val description = jsonObject.getString("description")
-                val producer = jsonObject.getString("producer")
-                val releaseDate = jsonObject.getString("release_date")
-                val rtScore = jsonObject.getString("rt_score")
+                DataManager.initializeMovies(jsonObject)
+                movInfoList = DataManager.movieList
 
-                val movInfo = MovieInfo(title, director, description, producer, releaseDate, rtScore)
-
-                movInfoList.add(movInfo)
             }
         } catch (ex: Exception) {
             Log.d("Wrn-pJson-ex", ex.message)
@@ -52,7 +45,7 @@ class ExerciseActivityModel(context: Context) : IExerciseActivityContract.IModel
 
     private fun parseJsonPeopleData(): ArrayList<People> {
         Log.d("Wrn", "parseJsonPeopleData")
-        val pplInfoList = ArrayList<People>()
+        var pplInfoList = ArrayList<People>()
         try {
             val jsonArr = JSONArray(loadJSONFromAsset("peopleInfo.json"))
 
@@ -61,15 +54,10 @@ class ExerciseActivityModel(context: Context) : IExerciseActivityContract.IModel
             (0..len).forEach { index ->
                 val jsonObject = jsonArr.getJSONObject(index)
 
-                val name = jsonObject.getString("name")
-                val gender = jsonObject.getString("gender")
-                val age = jsonObject.getString("age")
-                val eyeColor = jsonObject.getString("eye_color")
-                val hairColor = jsonObject.getString("hair_color")
+                DataManager.initializePeople(jsonObject)
 
-                val pplInfo = People(name, gender, age, eyeColor, hairColor)
+                pplInfoList = DataManager.peopleList
 
-                pplInfoList.add(pplInfo)
             }
         } catch (ex: Exception) {
             Log.d("Wrn-pJson-ex", ex.message)

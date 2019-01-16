@@ -13,6 +13,7 @@ import com.dev.nerrawbox.jsonviewparser.model.MovieInfo
 
 import com.dev.nerrawbox.jsonviewparser.R
 import com.dev.nerrawbox.jsonviewparser.ViewMovieActivity
+import com.dev.nerrawbox.jsonviewparser.model.DataManager
 import java.io.Serializable
 
 class MovieListAdapter(context: Context, resource: Int, objects: List<MovieInfo>?) :
@@ -23,30 +24,23 @@ class MovieListAdapter(context: Context, resource: Int, objects: List<MovieInfo>
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
-        val title = getItem(position)!!.title
-        val director = getItem(position)!!.director
-        val description = getItem(position)!!.description
-        val producer = getItem(position)!!.producer
-        val releaseDate = getItem(position)!!.release_date
-        val rtScore = getItem(position)!!.rt_score
-        
-//        Log.d("Wrn", "Adapter: Title =  $title")
-//        Log.d("Wrn", "Adapter: Director =  $director")
-
         var listItem: View? = convertView
 
         if (listItem == null)
             listItem = LayoutInflater.from(mContext).inflate(mResource, parent, false)
 
+        val movieInfo = DataManager.findMovie(position)
+
+        val title = movieInfo.title
+        val director = movieInfo.director
+
         val txtTitle = listItem?.findViewById(R.id.txtForTitleOrName) as TextView
         val txtDirector = listItem.findViewById(R.id.txtForDirectorOrGender) as TextView
         val btnViewMov = listItem.findViewById(R.id.btnViewMovOrPeople) as ImageButton
 
-        val movieInfo = MovieInfo(title, director, description, producer, releaseDate, rtScore)
-
         btnViewMov.setOnClickListener{
             val intent = Intent(mContext, ViewMovieActivity::class.java)
-            intent.putExtra("movieInfo", movieInfo as Serializable)
+            intent.putExtra("movieInfo-index", position)
 
             mContext.startActivity(intent)
         }
