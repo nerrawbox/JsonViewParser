@@ -33,7 +33,7 @@ class ExerciseActivityModel(context: Context) : IExerciseActivityContract.IModel
             (0..len).forEach { index ->
                 val jsonObject = jsonArr.getJSONObject(index)
 
-                DataManager.initializeMovies(jsonObject)
+                DataManager.initializeMovie(jsonObject)
                 movInfoList = DataManager.movieList
 
             }
