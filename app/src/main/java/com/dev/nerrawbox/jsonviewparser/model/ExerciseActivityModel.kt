@@ -25,10 +25,8 @@ class ExerciseActivityModel(context: Context) : IExerciseActivityContract.IModel
     private fun parseJsonMovieData(): ArrayList<MovieInfo> {
         Log.d("Wrn", "parseJsonMovieData")
         var movInfoList = ArrayList<MovieInfo>()
-        val m = MovieInfo("", "", "", "", "", "")
-        var genericDataManager = GenericDataManager(m)
+        val genericDataManager = GenericDataManager<MovieInfo>()
         try {
-
             val jsonArr = JSONArray(loadJSONFromAsset("movieInfo.json"))
 
             val len = jsonArr.length() -1
@@ -45,8 +43,7 @@ class ExerciseActivityModel(context: Context) : IExerciseActivityContract.IModel
 
                 val movie = MovieInfo(title, director, description, producer, releaseDate, rtScore)
 
-                genericDataManager = GenericDataManager(movie)
-                genericDataManager.setMyGenericList()
+                genericDataManager.setMyGenericList(movie)
             }
             movInfoList = genericDataManager.getGenericList()
 
@@ -60,6 +57,7 @@ class ExerciseActivityModel(context: Context) : IExerciseActivityContract.IModel
     private fun parseJsonPeopleData(): ArrayList<People> {
         Log.d("Wrn", "parseJsonPeopleData")
         var pplInfoList = ArrayList<People>()
+        val genericDataManager = GenericDataManager<People>()
         try {
             val jsonArr = JSONArray(loadJSONFromAsset("peopleInfo.json"))
 
@@ -68,11 +66,17 @@ class ExerciseActivityModel(context: Context) : IExerciseActivityContract.IModel
             (0..len).forEach { index ->
                 val jsonObject = jsonArr.getJSONObject(index)
 
-                DataManager.initializePeople(jsonObject)
+                val name = jsonObject.getString("name")
+                val gender = jsonObject.getString("gender")
+                val age = jsonObject.getString("age")
+                val eyeColor = jsonObject.getString("eye_color")
+                val hairColor = jsonObject.getString("hair_color")
 
-                pplInfoList = DataManager.peopleList
+                val person = People(name, gender, age, eyeColor, hairColor)
 
+                genericDataManager.setMyGenericList(person)
             }
+            pplInfoList = genericDataManager.getGenericList()
         } catch (ex: Exception) {
             Log.d("Wrn-pJson-ex", ex.message)
         }

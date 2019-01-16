@@ -27,7 +27,7 @@ class PeopleListAdapter(context: Context, resource: Int, objects: List<People>?)
         if (listItem == null)
             listItem = LayoutInflater.from(mContext).inflate(mResource, parent, false)
 
-        val peopleInfo = DataManager.findPeople(position)
+        val peopleInfo = getItem(position)
 
         val name =peopleInfo.name
         val gender = peopleInfo.gender
@@ -41,7 +41,7 @@ class PeopleListAdapter(context: Context, resource: Int, objects: List<People>?)
 
         btnViewPeople.setOnClickListener {
             val intent = Intent(mContext, ViewPeopleActivity::class.java)
-            intent.putExtra("peopleInfo-index", position)
+            intent.putExtra("peopleInfo", peopleInfo as Serializable)
             mContext.startActivity(intent)
         }
 
