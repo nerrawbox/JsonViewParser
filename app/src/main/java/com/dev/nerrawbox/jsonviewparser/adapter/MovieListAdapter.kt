@@ -14,6 +14,7 @@ import com.dev.nerrawbox.jsonviewparser.model.MovieInfo
 import com.dev.nerrawbox.jsonviewparser.R
 import com.dev.nerrawbox.jsonviewparser.ViewMovieActivity
 import com.dev.nerrawbox.jsonviewparser.model.DataManager
+import com.dev.nerrawbox.jsonviewparser.model.GenericDataManager
 import java.io.Serializable
 
 class MovieListAdapter(context: Context, resource: Int, objects: List<MovieInfo>?) :
@@ -26,10 +27,11 @@ class MovieListAdapter(context: Context, resource: Int, objects: List<MovieInfo>
 
         var listItem: View? = convertView
 
+
         if (listItem == null)
             listItem = LayoutInflater.from(mContext).inflate(mResource, parent, false)
 
-        val movieInfo = DataManager.findMovie(position)
+        val movieInfo = getItem(position)
 
         val title = movieInfo.title
         val director = movieInfo.director
@@ -40,7 +42,7 @@ class MovieListAdapter(context: Context, resource: Int, objects: List<MovieInfo>
 
         btnViewMov.setOnClickListener{
             val intent = Intent(mContext, ViewMovieActivity::class.java)
-            intent.putExtra("movieInfo-index", position)
+            intent.putExtra("movieInfo", movieInfo as Serializable)
 
             mContext.startActivity(intent)
         }
