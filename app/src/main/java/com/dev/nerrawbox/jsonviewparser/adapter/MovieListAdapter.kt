@@ -2,23 +2,20 @@ package com.dev.nerrawbox.jsonviewparser.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.TextView
-import com.dev.nerrawbox.jsonviewparser.model.MovieInfo
+import com.dev.nerrawbox.jsonviewparser.model.Movie
 
 import com.dev.nerrawbox.jsonviewparser.R
 import com.dev.nerrawbox.jsonviewparser.ViewMovieActivity
-import com.dev.nerrawbox.jsonviewparser.model.DataManager
-import com.dev.nerrawbox.jsonviewparser.model.GenericDataManager
 import java.io.Serializable
 
-class MovieListAdapter(context: Context, resource: Int, objects: List<MovieInfo>?) :
-    ArrayAdapter<MovieInfo>(context, resource, objects) {
+class MovieListAdapter(context: Context, resource: Int, objects: List<Movie>?) :
+    ArrayAdapter<Movie>(context, resource, objects) {
 
     private val mContext: Context by lazy { context }
     private val mResource: Int by lazy { resource }

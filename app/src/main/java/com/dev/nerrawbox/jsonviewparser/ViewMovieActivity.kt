@@ -3,7 +3,7 @@ package com.dev.nerrawbox.jsonviewparser
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import com.dev.nerrawbox.jsonviewparser.model.MovieInfo
+import com.dev.nerrawbox.jsonviewparser.model.Movie
 
 class ViewMovieActivity : AppCompatActivity() {
 
@@ -19,7 +19,7 @@ class ViewMovieActivity : AppCompatActivity() {
         val txtViewScore: TextView = findViewById(R.id.txtViewScore)
 
         if(intent != null){
-            val movInfo = intent.extras.get("movieInfo") as MovieInfo
+            val movInfo = intent.extras.get("movieInfo") as Movie
 
             txtViewTitle.text = movInfo.title
             txtViewDirector.text = movInfo.director

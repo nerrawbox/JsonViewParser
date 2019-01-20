@@ -4,7 +4,7 @@ import org.json.JSONObject
 
 object DataManager {
 
-    val movieList = ArrayList<MovieInfo>()
+    val movieList = ArrayList<Movie>()
     val peopleList = ArrayList<People>()
 
     fun initializeMovie(jsonObject: JSONObject) {
@@ -16,7 +16,7 @@ object DataManager {
             val releaseDate = jsonObject.getString("release_date")
             val rtScore = jsonObject.getString("rt_score")
 
-            val movie = MovieInfo(title, director, description, producer, releaseDate, rtScore)
+            val movie = Movie(title, director, description, producer, releaseDate, rtScore)
 
             movieList.add(movie)
     }
@@ -36,5 +36,5 @@ object DataManager {
 
     fun findPeople(index: Int) : People = peopleList[index]
 
-    fun findMovie(index: Int) : MovieInfo = movieList[index]
+    fun findMovie(index: Int) : Movie = movieList[index]
 }

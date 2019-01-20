@@ -22,10 +22,10 @@ class ExerciseActivityModel(context: Context) : IExerciseActivityContract.IModel
         return PeopleListAdapter(mContext, mResource, parseJsonPeopleData())
     }
 
-    private fun parseJsonMovieData(): ArrayList<MovieInfo> {
+    private fun parseJsonMovieData(): ArrayList<Movie> {
         Log.d("Wrn", "parseJsonMovieData")
-        var movInfoList = ArrayList<MovieInfo>()
-        val genericDataManager = GenericDataManager<MovieInfo>()
+        var movInfoList = ArrayList<Movie>()
+        val genericDataManager = GenericDataManager<Movie>()
         try {
             val jsonArr = JSONArray(loadJSONFromAsset("movieInfo.json"))
 
@@ -41,7 +41,7 @@ class ExerciseActivityModel(context: Context) : IExerciseActivityContract.IModel
                 val releaseDate = jsonObject.getString("release_date")
                 val rtScore = jsonObject.getString("rt_score")
 
-                val movie = MovieInfo(title, director, description, producer, releaseDate, rtScore)
+                val movie = Movie(title, director, description, producer, releaseDate, rtScore)
 
                 genericDataManager.setMyGenericList(movie)
             }
