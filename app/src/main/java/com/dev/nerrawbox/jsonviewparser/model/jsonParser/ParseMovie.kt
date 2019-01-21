@@ -27,14 +27,7 @@ class ParseMovie(private val mContext: Context,
                 val releaseDate = jsonObject.getString("release_date")
                 val rtScore = jsonObject.getString("rt_score")
 
-                val movie = Movie(
-                    title,
-                    director,
-                    description,
-                    producer,
-                    releaseDate,
-                    rtScore
-                )
+                val movie = Movie( title, director, description, producer, releaseDate, rtScore)
 
                 genericDataManager.setMyGenericList(movie)
             }

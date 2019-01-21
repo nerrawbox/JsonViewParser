@@ -26,8 +26,7 @@ class ParsePeople(private val mContext: Context,
                 val eyeColor = jsonObject.getString("eye_color")
                 val hairColor = jsonObject.getString("hair_color")
 
-                val person =
-                    People(name, gender, age, eyeColor, hairColor)
+                val person = People(name, gender, age, eyeColor, hairColor)
 
                 genericDataManager.setMyGenericList(person)
             }
