@@ -11,7 +11,7 @@ import android.widget.TextView
 import com.dev.nerrawbox.jsonviewparser.R
 import com.dev.nerrawbox.jsonviewparser.ViewPeopleActivity
 import com.dev.nerrawbox.jsonviewparser.model.DataManager
-import com.dev.nerrawbox.jsonviewparser.model.People
+import com.dev.nerrawbox.jsonviewparser.model.dataManager.People
 import java.io.Serializable
 
 class PeopleListAdapter(context: Context, resource: Int, objects: List<People>?) :

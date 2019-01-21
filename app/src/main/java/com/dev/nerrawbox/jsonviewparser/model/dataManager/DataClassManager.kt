@@ -1,6 +1,6 @@
-package com.dev.nerrawbox.jsonviewparser.model
+package com.dev.nerrawbox.jsonviewparser.model.dataManager
 
-import com.dev.nerrawbox.jsonviewparser.model.IDataManager.*
+import com.dev.nerrawbox.jsonviewparser.model.dataManager.IDataManager.*
 import java.io.Serializable
 
 data class Movie(override var title: String,

@@ -1,4 +1,4 @@
-package com.dev.nerrawbox.jsonviewparser.model
+package com.dev.nerrawbox.jsonviewparser.model.dataManager
 
 
 class GenericDataManager<T> {

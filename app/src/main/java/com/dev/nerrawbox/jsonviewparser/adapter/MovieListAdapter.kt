@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.TextView
-import com.dev.nerrawbox.jsonviewparser.model.Movie
+import com.dev.nerrawbox.jsonviewparser.model.dataManager.Movie
 
 import com.dev.nerrawbox.jsonviewparser.R
 import com.dev.nerrawbox.jsonviewparser.ViewMovieActivity

@@ -3,7 +3,7 @@ package com.dev.nerrawbox.jsonviewparser
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import com.dev.nerrawbox.jsonviewparser.model.Movie
+import com.dev.nerrawbox.jsonviewparser.model.dataManager.Movie
 
 class ViewMovieActivity : AppCompatActivity() {
 
