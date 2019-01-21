@@ -9,7 +9,8 @@ import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.TextView
 import com.dev.nerrawbox.jsonviewparser.R
-import com.dev.nerrawbox.jsonviewparser.ViewPeopleActivity
+import com.dev.nerrawbox.jsonviewparser.model.dataManager.IDataManager
+import com.dev.nerrawbox.jsonviewparser.view.ViewPeopleActivity
 import com.dev.nerrawbox.jsonviewparser.model.dataManager.People
 import java.io.Serializable
 
@@ -26,10 +27,10 @@ class PeopleListAdapter(context: Context, resource: Int, objects: List<People>?)
         if (listItem == null)
             listItem = LayoutInflater.from(mContext).inflate(mResource, parent, false)
 
-        val peopleInfo = getItem(position)
+        val peopleInfo = getItem(position) as IDataManager.IDataClassManager
 
-        val name =peopleInfo.name
-        val gender = peopleInfo.gender
+        val name = peopleInfo.getDetail1()
+        val gender = peopleInfo.getDetail2()
 
         val txtName = listItem?.findViewById(R.id.txtForTitleOrName) as TextView
         val txtGender = listItem.findViewById(R.id.txtForDirectorOrGender) as TextView

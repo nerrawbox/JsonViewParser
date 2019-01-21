@@ -11,7 +11,8 @@ import android.widget.TextView
 import com.dev.nerrawbox.jsonviewparser.model.dataManager.Movie
 
 import com.dev.nerrawbox.jsonviewparser.R
-import com.dev.nerrawbox.jsonviewparser.ViewMovieActivity
+import com.dev.nerrawbox.jsonviewparser.view.ViewMovieActivity
+import com.dev.nerrawbox.jsonviewparser.model.dataManager.IDataManager
 import java.io.Serializable
 
 class MovieListAdapter(context: Context, resource: Int, objects: List<Movie>?) :
@@ -24,14 +25,13 @@ class MovieListAdapter(context: Context, resource: Int, objects: List<Movie>?) :
 
         var listItem: View? = convertView
 
-
         if (listItem == null)
             listItem = LayoutInflater.from(mContext).inflate(mResource, parent, false)
 
-        val movieInfo = getItem(position)
+        val movieInfo = getItem(position) as IDataManager.IDataClassManager
 
-        val title = movieInfo.title
-        val director = movieInfo.director
+        val title = movieInfo.getDetail1()
+        val director = movieInfo.getDetail2()
 
         val txtTitle = listItem?.findViewById(R.id.txtForTitleOrName) as TextView
         val txtDirector = listItem.findViewById(R.id.txtForDirectorOrGender) as TextView

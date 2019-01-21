@@ -1,9 +1,10 @@
-package com.dev.nerrawbox.jsonviewparser
+package com.dev.nerrawbox.jsonviewparser.view
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import com.dev.nerrawbox.jsonviewparser.model.dataManager.Movie
+import com.dev.nerrawbox.jsonviewparser.R
+import com.dev.nerrawbox.jsonviewparser.model.dataManager.IDataManager
 
 class ViewMovieActivity : AppCompatActivity() {
 
@@ -19,14 +20,14 @@ class ViewMovieActivity : AppCompatActivity() {
         val txtViewScore: TextView = findViewById(R.id.txtViewScore)
 
         if(intent != null){
-            val movInfo = intent.extras.get("movieInfo") as Movie
+            val movInfo = intent.extras.get("movieInfo") as IDataManager.IDataClassManager
 
-            txtViewTitle.text = movInfo.title
-            txtViewDirector.text = movInfo.director
-            txtViewDescription.text = movInfo.description
-            txtViewProducer.text = movInfo.producer
-            txtViewRelDate.text = movInfo.releaseDate
-            txtViewScore.text = movInfo.rtScore
+            txtViewTitle.text = movInfo.getDetail1()
+            txtViewDirector.text = movInfo.getDetail2()
+            txtViewDescription.text = movInfo.getDetail3()
+            txtViewProducer.text = movInfo.getDetail4()
+            txtViewRelDate.text = movInfo.getDetail5()
+            txtViewScore.text = movInfo.getDetail6()
         }
     }
 }

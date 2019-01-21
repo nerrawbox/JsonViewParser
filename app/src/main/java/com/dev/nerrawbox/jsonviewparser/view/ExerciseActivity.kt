@@ -1,9 +1,10 @@
-package com.dev.nerrawbox.jsonviewparser
+package com.dev.nerrawbox.jsonviewparser.view
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ListView
+import com.dev.nerrawbox.jsonviewparser.R
 import com.dev.nerrawbox.jsonviewparser.adapter.MovieListAdapter
 import com.dev.nerrawbox.jsonviewparser.adapter.PeopleListAdapter
 import com.dev.nerrawbox.jsonviewparser.contract.IExerciseActivityContract
@@ -21,7 +22,9 @@ class ExerciseActivity : AppCompatActivity(), IExerciseActivityContract.IViewCon
         setContentView(R.layout.activity_exercise)
         Log.d("Wrn-Act", "OnCreate")
 
-        mPresenter = ExerciseActivityPresenter(this, this@ExerciseActivity, R.layout.my_listview_layout)
+        mPresenter = ExerciseActivityPresenter(this, this@ExerciseActivity,
+            R.layout.my_listview_layout
+        )
 
         val listType: String = intent.getStringExtra("list_type")
         mPresenter.populateListView(listType)

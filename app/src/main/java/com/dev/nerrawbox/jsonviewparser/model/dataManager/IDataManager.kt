@@ -18,4 +18,13 @@ interface IDataManager {
         var eyeColor: String
         var hairColor: String
     }
+
+    interface IDataClassManager {
+        fun getDetail1() : String = ""
+        fun getDetail2() : String = ""
+        fun getDetail3() : String = ""
+        fun getDetail4() : String = ""
+        fun getDetail5() : String = ""
+        fun getDetail6() : String = ""
+    }
 }
