@@ -13,19 +13,18 @@ import com.dev.nerrawbox.jsonviewparser.presenter.ExerciseActivityPresenter
 class ExerciseActivity : AppCompatActivity(), IExerciseActivityContract.IViewContract {
 
 
-    private var mPresenter: IPresenterContract? = null
-    private var movieInfoListView: ListView? = null
+    private lateinit var mPresenter: IPresenterContract
+    private lateinit var movieInfoListView: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise)
+        Log.d("Wrn-Act", "OnCreate")
+
+        mPresenter = ExerciseActivityPresenter(this, this@ExerciseActivity, R.layout.my_listview_layout)
 
         val listType: String = intent.getStringExtra("list_type")
-
-        mPresenter = ExerciseActivityPresenter(this, this@ExerciseActivity, R.layout.my_listview_layout, listType)
-        Log.d("Wrn-Act", "OnCreate")
-        (mPresenter as ExerciseActivityPresenter).populateListView()
-
+        mPresenter.populateListView(listType)
     }
 
     override fun initListView() {
@@ -35,11 +34,11 @@ class ExerciseActivity : AppCompatActivity(), IExerciseActivityContract.IViewCon
 
     override fun setListViewAdapter(adapter: MovieListAdapter) {
         Log.d("Wrn-Act", "setListViewAdapter")
-        movieInfoListView?.adapter = adapter
+        movieInfoListView.adapter = adapter
     }
 
     override fun setListViewAdapter(adapter: PeopleListAdapter) {
         Log.d("Wrn-Act", "setListViewAdapter")
-        movieInfoListView?.adapter = adapter
+        movieInfoListView.adapter = adapter
     }
 }

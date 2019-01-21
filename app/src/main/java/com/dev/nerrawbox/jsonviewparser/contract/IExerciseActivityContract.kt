@@ -1,6 +1,5 @@
 package com.dev.nerrawbox.jsonviewparser.contract
 
-import android.view.View
 import com.dev.nerrawbox.jsonviewparser.adapter.MovieListAdapter
 import com.dev.nerrawbox.jsonviewparser.adapter.PeopleListAdapter
 
@@ -18,7 +17,6 @@ interface IExerciseActivityContract {
     }
 
     interface IPresenterContract {
-        fun populateListView()
-        fun onClick(view: View)
+        fun populateListView(listType: String)
     }
 }
