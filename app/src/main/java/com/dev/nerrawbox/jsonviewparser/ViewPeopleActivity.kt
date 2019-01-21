@@ -23,8 +23,8 @@ class ViewPeopleActivity : AppCompatActivity() {
             txtName.text = peopleInfo.name
             txtGender.text = peopleInfo.gender
             txtAge.text = peopleInfo.age
-            txtEyeColor.text = peopleInfo.eye_color
-            txtHairColor.text = peopleInfo.hair_color
+            txtEyeColor.text = peopleInfo.eyeColor
+            txtHairColor.text = peopleInfo.hairColor
 
         }
     }

@@ -25,8 +25,8 @@ class ViewMovieActivity : AppCompatActivity() {
             txtViewDirector.text = movInfo.director
             txtViewDescription.text = movInfo.description
             txtViewProducer.text = movInfo.producer
-            txtViewRelDate.text = movInfo.release_date
-            txtViewScore.text = movInfo.rt_score
+            txtViewRelDate.text = movInfo.releaseDate
+            txtViewScore.text = movInfo.rtScore
         }
     }
 }
