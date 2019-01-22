@@ -1,27 +1,36 @@
 package com.dev.nerrawbox.jsonviewparser.model.dataManager
 
-import com.dev.nerrawbox.jsonviewparser.model.dataManager.IDataManager.*
 import java.io.Serializable
 
-data class Movie(override var title: String, override var director: String, override var description: String,
-                 override var producer: String, override var releaseDate: String, override var rtScore: String)
-    : IMovie, IDataClassManager<IMovie>, Serializable {
+data class Movie(var title: String, var director: String, var description: String,
+                 var producer: String, var releaseDate: String, var rtScore: String)
+    : ViewActivityInterface, Serializable {
 
-    override fun getDetail(): IMovie {
-        val iMovie = this@Movie as IMovie
+    override fun getDetail1(): String { return title }
+    override fun getDetail2(): String { return director }
+    override fun getDetail3(): String { return description }
+    override fun getDetail4(): String { return producer }
+    override fun getDetail5(): String { return rtScore }
 
-        return iMovie
-    }
+    override fun getLabel2(): String { return "Director" }
+    override fun getLabel3(): String { return "Producer" }
+    override fun getLabel4(): String { return "Released Date" }
+    override fun getLabel5(): String { return "Score" }
+
 }
 
-data class People(override var name: String, override var gender: String, override var age: String,
-                  override var eyeColor: String, override var hairColor: String)
-    : IPeople, IDataClassManager<IPeople>, Serializable {
+data class People(var name: String,var gender: String,var age: String,
+                  var eyeColor: String, var hairColor: String)
+    : ViewActivityInterface, Serializable {
 
-    override fun getDetail(): IPeople {
-        val iPeople = this@People as IPeople
+    override fun getDetail1(): String { return name }
+    override fun getDetail2(): String { return gender }
+    override fun getDetail3(): String { return age }
+    override fun getDetail4(): String { return eyeColor }
+    override fun getDetail5(): String { return hairColor }
 
-        return iPeople
-    }
-
+    override fun getLabel2(): String { return "gender" }
+    override fun getLabel3(): String { return "age" }
+    override fun getLabel4(): String { return "eye color" }
+    override fun getLabel5(): String { return "hair color" }
 }

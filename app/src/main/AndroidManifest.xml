@@ -20,9 +20,7 @@
         </activity>
         <activity android:name=".view.ExerciseActivity">
         </activity>
-        <activity android:name=".view.ViewMovieActivity">
-        </activity>
-        <activity android:name=".view.ViewPeopleActivity">
+        <activity android:name=".view.ViewActivity">
         </activity>
     </application>
 
