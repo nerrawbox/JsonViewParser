@@ -11,8 +11,7 @@ import android.widget.TextView
 import com.dev.nerrawbox.jsonviewparser.model.dataManager.Movie
 
 import com.dev.nerrawbox.jsonviewparser.R
-import com.dev.nerrawbox.jsonviewparser.view.ViewMovieActivity
-import com.dev.nerrawbox.jsonviewparser.model.dataManager.IDataManager
+import com.dev.nerrawbox.jsonviewparser.view.ViewActivity
 import java.io.Serializable
 
 class MovieListAdapter(context: Context, resource: Int, objects: List<Movie>?) :
@@ -30,18 +29,18 @@ class MovieListAdapter(context: Context, resource: Int, objects: List<Movie>?) :
 
         @Suppress("UNCHECKED_CAST")
         val movieInfo = getItem(position)
-                as IDataManager.IDataClassManager<IDataManager.IMovie>
+                as Movie
 
-        val title = movieInfo.getDetail().title
-        val director = movieInfo.getDetail().director
+        val title = movieInfo.title
+        val director = movieInfo.director
 
         val txtTitle = listItem?.findViewById(R.id.txtForTitleOrName) as TextView
         val txtDirector = listItem.findViewById(R.id.txtForDirectorOrGender) as TextView
         val btnViewMov = listItem.findViewById(R.id.btnViewMovOrPeople) as ImageButton
 
         btnViewMov.setOnClickListener{
-            val intent = Intent(mContext, ViewMovieActivity::class.java)
-            intent.putExtra("movieInfo", movieInfo as Serializable)
+            val intent = Intent(mContext, ViewActivity::class.java)
+            intent.putExtra("viewInfo", movieInfo as Serializable)
 
             mContext.startActivity(intent)
         }
