@@ -7,7 +7,7 @@ data class Movie(override var title: String, override var director: String, over
                  override var producer: String, override var releaseDate: String, override var rtScore: String)
     : IMovie, IDataClassManager, Serializable {
 
-    override fun getDetail1() : String = title
+    override fun getDetail1(): String = title
 
     override fun getDetail2(): String = director
 
