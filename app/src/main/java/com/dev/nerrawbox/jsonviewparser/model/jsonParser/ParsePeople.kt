@@ -6,12 +6,16 @@ import com.dev.nerrawbox.jsonviewparser.model.dataManager.People
 import org.json.JSONArray
 import java.nio.charset.Charset
 
-class ParsePeople(private val mContext: Context,
-                  val result: (ArrayList<People>) -> Unit,
-                  val error: (String) -> Unit) : IJsonParser {
+class ParsePeople(private val mContext: Context) : IJsonParser, IJsonParser.IJsonParserResult<People> {
+
+    private val genericDataManager by lazy { GenericDataManager<People>() }
+
+    override fun getResultList(): ArrayList<People> {
+        parseJson()
+        return genericDataManager.getGenericList()
+    }
 
     override fun parseJson() {
-        val genericDataManager by lazy { GenericDataManager<People>() }
         try {
             val jsonArr = JSONArray(fetchJson())
 
@@ -33,7 +37,6 @@ class ParsePeople(private val mContext: Context,
         } catch (ex: Exception) {
             error(ex.message!!)
         }
-        result(genericDataManager.getGenericList())
     }
 
     override fun fetchJson(): String {

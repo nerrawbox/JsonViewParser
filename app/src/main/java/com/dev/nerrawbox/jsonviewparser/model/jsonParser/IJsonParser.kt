@@ -6,4 +6,9 @@ interface IJsonParser {
 
     fun fetchJson() : String
 
+    interface IJsonParserResult<T>{
+
+        fun getResultList() : ArrayList<T>
+    }
+
 }

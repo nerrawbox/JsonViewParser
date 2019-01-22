@@ -7,12 +7,16 @@ import org.json.JSONArray
 import java.nio.charset.Charset
 import kotlin.collections.ArrayList
 
-class ParseMovie(private val mContext: Context,
-                 val result: (ArrayList<Movie>) -> Unit,
-                 val error: (String) -> Unit) : IJsonParser {
+class ParseMovie(private val mContext: Context) : IJsonParser, IJsonParser.IJsonParserResult<Movie>{
+
+    private val genericDataManager by lazy { GenericDataManager<Movie>() }
+
+    override fun getResultList() : ArrayList<Movie> {
+        parseJson()
+        return genericDataManager.getGenericList()
+    }
 
     override fun parseJson() {
-        val genericDataManager by lazy { GenericDataManager<Movie>() }
         try {
             val jsonArr = JSONArray(fetchJson())
             val len = jsonArr.length() -1
@@ -34,8 +38,6 @@ class ParseMovie(private val mContext: Context,
         } catch (ex: Exception) {
             error(ex.message!!)
         }
-
-        result(genericDataManager.getGenericList())
     }
 
     override fun fetchJson() : String {
