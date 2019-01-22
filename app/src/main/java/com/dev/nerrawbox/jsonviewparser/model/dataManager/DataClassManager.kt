@@ -5,32 +5,23 @@ import java.io.Serializable
 
 data class Movie(override var title: String, override var director: String, override var description: String,
                  override var producer: String, override var releaseDate: String, override var rtScore: String)
-    : IMovie, IDataClassManager, Serializable {
+    : IMovie, IDataClassManager<IMovie>, Serializable {
 
-    override fun getDetail1(): String = title
+    override fun getDetail(): IMovie {
+        val iMovie = this@Movie as IMovie
 
-    override fun getDetail2(): String = director
-
-    override fun getDetail3(): String = description
-
-    override fun getDetail4(): String = producer
-
-    override fun getDetail5(): String = releaseDate
-
-    override fun getDetail6(): String = rtScore
+        return iMovie
+    }
 }
 
 data class People(override var name: String, override var gender: String, override var age: String,
                   override var eyeColor: String, override var hairColor: String)
-    : IPeople, IDataClassManager, Serializable {
+    : IPeople, IDataClassManager<IPeople>, Serializable {
 
-    override fun getDetail1(): String = name
+    override fun getDetail(): IPeople {
+        val iPeople = this@People as IPeople
 
-    override fun getDetail2(): String = gender
+        return iPeople
+    }
 
-    override fun getDetail3(): String = age
-
-    override fun getDetail4(): String = eyeColor
-
-    override fun getDetail5(): String = hairColor
 }

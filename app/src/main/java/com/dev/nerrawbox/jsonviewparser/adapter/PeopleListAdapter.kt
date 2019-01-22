@@ -27,10 +27,12 @@ class PeopleListAdapter(context: Context, resource: Int, objects: List<People>?)
         if (listItem == null)
             listItem = LayoutInflater.from(mContext).inflate(mResource, parent, false)
 
-        val peopleInfo = getItem(position) as IDataManager.IDataClassManager
+        @Suppress("UNCHECKED_CAST")
+        val peopleInfo = getItem(position)
+                as IDataManager.IDataClassManager<IDataManager.IPeople>
 
-        val name = peopleInfo.getDetail1()
-        val gender = peopleInfo.getDetail2()
+        val name = peopleInfo.getDetail().name
+        val gender = peopleInfo.getDetail().gender
 
         val txtName = listItem?.findViewById(R.id.txtForTitleOrName) as TextView
         val txtGender = listItem.findViewById(R.id.txtForDirectorOrGender) as TextView

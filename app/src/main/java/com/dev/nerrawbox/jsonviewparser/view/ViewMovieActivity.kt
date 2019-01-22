@@ -20,14 +20,16 @@ class ViewMovieActivity : AppCompatActivity() {
         val txtViewScore: TextView = findViewById(R.id.txtViewScore)
 
         if(intent != null){
-            val movInfo = intent.extras.get("movieInfo") as IDataManager.IDataClassManager
+            @Suppress("UNCHECKED_CAST")
+            val movInfo = intent.extras.get("movieInfo")
+                    as IDataManager.IDataClassManager<IDataManager.IMovie>
 
-            txtViewTitle.text = movInfo.getDetail1()
-            txtViewDirector.text = movInfo.getDetail2()
-            txtViewDescription.text = movInfo.getDetail3()
-            txtViewProducer.text = movInfo.getDetail4()
-            txtViewRelDate.text = movInfo.getDetail5()
-            txtViewScore.text = movInfo.getDetail6()
+            txtViewTitle.text = movInfo.getDetail().title
+            txtViewDirector.text = movInfo.getDetail().director
+            txtViewDescription.text = movInfo.getDetail().description
+            txtViewProducer.text = movInfo.getDetail().producer
+            txtViewRelDate.text = movInfo.getDetail().releaseDate
+            txtViewScore.text = movInfo.getDetail().rtScore
         }
     }
 }

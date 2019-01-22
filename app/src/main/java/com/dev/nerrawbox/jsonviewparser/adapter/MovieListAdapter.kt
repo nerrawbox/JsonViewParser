@@ -28,10 +28,12 @@ class MovieListAdapter(context: Context, resource: Int, objects: List<Movie>?) :
         if (listItem == null)
             listItem = LayoutInflater.from(mContext).inflate(mResource, parent, false)
 
-        val movieInfo = getItem(position) as IDataManager.IDataClassManager
+        @Suppress("UNCHECKED_CAST")
+        val movieInfo = getItem(position)
+                as IDataManager.IDataClassManager<IDataManager.IMovie>
 
-        val title = movieInfo.getDetail1()
-        val director = movieInfo.getDetail2()
+        val title = movieInfo.getDetail().title
+        val director = movieInfo.getDetail().director
 
         val txtTitle = listItem?.findViewById(R.id.txtForTitleOrName) as TextView
         val txtDirector = listItem.findViewById(R.id.txtForDirectorOrGender) as TextView

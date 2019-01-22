@@ -19,13 +19,15 @@ class ViewPeopleActivity : AppCompatActivity() {
         val txtHairColor: TextView = findViewById(R.id.txtHairColor)
 
         if(intent != null){
-            val peopleInfo = intent.extras.get("peopleInfo") as IDataManager.IDataClassManager
+            @Suppress("UNCHECKED_CAST")
+            val peopleInfo = intent.extras.get("peopleInfo")
+                    as IDataManager.IDataClassManager<IDataManager.IPeople>
 
-            txtName.text = peopleInfo.getDetail1()
-            txtGender.text = peopleInfo.getDetail2()
-            txtAge.text = peopleInfo.getDetail3()
-            txtEyeColor.text = peopleInfo.getDetail4()
-            txtHairColor.text = peopleInfo.getDetail5()
+            txtName.text = peopleInfo.getDetail().name
+            txtGender.text = peopleInfo.getDetail().gender
+            txtAge.text = peopleInfo.getDetail().age
+            txtEyeColor.text = peopleInfo.getDetail().eyeColor
+            txtHairColor.text = peopleInfo.getDetail().hairColor
 
         }
     }
